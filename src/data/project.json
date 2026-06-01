@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Secure Share",
+    "description": "A Secured File Sharing Platform with end-to-end encryption, user authentication, and secure link generation.",
+    "tags": ["React", "TypeScript", "Supabase","PostgreSQL"],
+    "imageUrl": "/images/secshare.png",
+    "githubUrl": "https://github.com/Pulkitbarala/Sec-share",
+    "demoUrl": "https://sec-share.vercel.app/"
+  },
+  {
+    "title": "Deepfake detection",
+    "description": "A web application that uses machine learning to detect deepfake images by analyzing facial movements and inconsistencies.",
+    "tags": ["Python", "TensorFlow", "Flask","Gradio","huggingface"],
+    "imageUrl": "/images/deepfake-detection.png",
+    "githubUrl": "https://github.com/Pulkitbarala/Deep-fake-detect",
+    "demoUrl": "https://huggingface.co/spaces/pulkitbarala/deepfake-new"
+  },
+  {
+    "title": "E-consult/feedback system",
+    "description": "Analytics dashboard for tracking personal finance with interactive charts and CSV exports.",
+    "tags": ["React", "D3.js", "Tailwind","ML","openroute","geminiai"],
+    "imageUrl": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+    "githubUrl": "https://github.com/Pulkitbarala/E-consult",
+    "demoUrl": "https://e-consult-zeta.vercel.app/"
+  },
+  {
+    "title": "Auto typer",
+    "description": "An app that simulates human typing patterns to automatically fill out forms and perform repetitive tasks.",
+    "tags": ["Next.js", "Prisma", "PostgreSQL"],
+    "imageUrl": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
+    "githubUrl": "https://github.com/Pulkitbarala/Auto-typer",
+    "demoUrl": "https://auto-typer.vercel.app/"
+  },
+  {
+    "title": "Google Cloud courses quiz automation extension",
+    "description": "A browser extension that automates quiz completion for Google Cloud courses by simulating user interactions and providing correct answers.",
+    "tags": ["html", "Supabase", "JavaScript","API"],
+    "imageUrl": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1000&auto=format&fit=crop",
+    "githubUrl": "https://github.com/Pulkitbarala/Google-Cloud-Quiz-Automation",
+    "demoUrl": "https://google-cloud-quiz-automation.vercel.app/"
+  },
+  {
+    "title": "Fitness Tracker App",
+    "description": "Mobile-first web app for logging workouts, tracking nutrition, and viewing progress.",
+    "tags": ["React", "Redux", "Supabase"],
+    "imageUrl": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000&auto=format&fit=crop",
+    "githubUrl": "https://github.com",
+    "demoUrl": "https://demo.com"
+  },
+  {
+    "title": "Recipe Finder",
+    "description": "Search engine for finding recipes based on available ingredients using external APIs.",
+    "tags": ["Next.js", "API", "Tailwind"],
+    "imageUrl": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=1000&auto=format&fit=crop",
+    "githubUrl": "https://github.com",
+    "demoUrl": "https://demo.com"
+  },
+  {
+    "title": "Dev Portfolio Template",
+    "description": "A customizable, open-source portfolio template for developers.",
+    "tags": ["React", "Framer Motion"],
+    "imageUrl": "https://images.unsplash.com/photo-1507238692062-548b815895ce?q=80&w=1000&auto=format&fit=crop",
+    "githubUrl": "https://github.com",
+    "demoUrl": "https://demo.com"
+  }
+]

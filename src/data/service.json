@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Frontend Development",
+    "description": "Building responsive, performant, and accessible user interfaces using modern frameworks like React and Next.js.",
+    "icon": "LayoutTemplate"
+  },
+  {
+    "title": "Backend Development",
+    "description": "Designing robust and scalable server-side architectures, RESTful APIs, and database schemas.",
+    "icon": "Server"
+  },
+  {
+    "title": "Full-Stack Applications",
+    "description": "End-to-end development of complex web applications tailored to your business needs.",
+    "icon": "Database"
+  },
+  {
+    "title": "Mobile App Development",
+    "description": "Creating cross-platform mobile applications using React Native.",
+    "icon": "Smartphone"
+  }
+]
