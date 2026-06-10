@@ -46,9 +46,11 @@ export function Navbar() {
     const currentHash = window.location.hash;
     if (currentHash) {
       const link = links.find(l => l.hash === currentHash);
-      if (link) setActiveSection(link.name);
+      if (link) {
+        setTimeout(() => setActiveSection(link.name), 0);
+      }
     } else {
-      handleScroll();
+      setTimeout(() => handleScroll(), 0);
     }
 
     window.addEventListener("scroll", handleScroll);

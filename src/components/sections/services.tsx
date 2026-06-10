@@ -14,7 +14,7 @@ export function Services() {
 
       <div className="grid sm:grid-cols-2 gap-6">
         {servicesData.map((service, index) => {
-          const IconComponent = (LucideIcons as any)[service.icon] || LucideIcons.HelpCircle;
+          const IconComponent = (LucideIcons as unknown as Record<string, React.ComponentType<{ size?: number | string }>>)[service.icon] || LucideIcons.HelpCircle;
 
           return (
             <motion.div

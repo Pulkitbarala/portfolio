@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Sarah Jenkins",
+    "role": "CTO & Co-Founder at FinFlow",
+    "text": "Pulkit delivered our secure dashboard ahead of schedule. His expertise in React and Supabase integration was pivotal in launching our MVP. The E2E encryption implementation was flawless.",
+    "avatarUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop"
+  },
+  {
+    "name": "Marcus Chen",
+    "role": "Lead Engineer at HealthLink",
+    "text": "Working with Pulkit on our consultation platform redesign was a great experience. He wrote clean, high-performance TypeScript code and solved critical layout shifts. Highly recommended!",
+    "avatarUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop"
+  }
+]

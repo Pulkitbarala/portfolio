@@ -25,16 +25,13 @@ export function Contact() {
     setStatus("loading");
     
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-          ...formData,
-        }),
+        body: JSON.stringify(formData),
       });
       
       const result = await response.json();
@@ -47,7 +44,7 @@ export function Contact() {
         setStatus("error");
         setTimeout(() => setStatus("idle"), 5000);
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
       setTimeout(() => setStatus("idle"), 5000);
     }
@@ -68,10 +65,10 @@ export function Contact() {
           className="flex flex-col gap-8"
         >
           <div>
-            <h3 className="text-2xl font-semibold mb-2">Let's talk about your project</h3>
+            <h3 className="text-2xl font-semibold mb-2">Let&apos;s talk about your project</h3>
             <p className="text-muted-foreground">
-              I'm currently available for freelance work and open to new opportunities. 
-              If you have a project that needs some creative touch, I'd love to hear about it.
+              I&apos;m currently available for freelance work and open to new opportunities. 
+              If you have a project that needs some creative touch, I&apos;d love to hear about it.
             </p>
           </div>
 

@@ -5,6 +5,8 @@ import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Download, Code, Mail, MousePointer2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import cvData from "@/data/cv.json";
+import Image from "next/image";
+import { siteConfig } from "@/lib/site";
 
 export function Hero() {
   const containerVariants: Variants = {
@@ -19,7 +21,7 @@ export function Hero() {
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } },
+    visible: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 100 } },
   };
 
   return (
@@ -56,11 +58,13 @@ export function Hero() {
             }}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
-              alt="Developer portrait"
-              className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+              alt={`${siteConfig.person.name} portrait`}
+              fill
+              priority
+              sizes="(max-width: 640px) 192px, 256px"
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
             />
           </motion.div>
 
@@ -90,10 +94,10 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, type: "spring" }}
           >
-            Hello, I'm Alex.
+            Hello, I&apos;m {siteConfig.person.name}.
           </motion.span>
           <span className="text-muted-foreground text-2xl sm:text-4xl leading-snug block mt-4">
-            I'm a <span className="font-bold text-foreground">full-stack developer</span> passionate about building <span className="text-accent underline decoration-accent/30 underline-offset-4">scalable web apps</span>.
+            I&apos;m a <span className="font-bold text-foreground">full-stack developer</span> passionate about building <span className="text-accent underline decoration-accent/30 underline-offset-4">scalable web apps</span>.
           </span>
         </motion.h1>
 

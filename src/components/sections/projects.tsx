@@ -7,6 +7,7 @@ import projectsData from "@/data/project.json";
 import { Code, ExternalLink, ChevronDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 type ProjectProps = {
   title: string;
@@ -15,25 +16,32 @@ type ProjectProps = {
   imageUrl: string;
   githubUrl: string;
   demoUrl: string;
+  outcome?: string;
 };
 
 const INITIAL_PROJECTS_COUNT = 6;
 
-function ProjectCard({ title, description, tags, imageUrl, githubUrl, demoUrl }: ProjectProps) {
+function ProjectCard({ title, description, tags, imageUrl, githubUrl, demoUrl, outcome }: ProjectProps) {
   const hasImage = typeof imageUrl === "string" && imageUrl.trim().length > 0;
 
   return (
     <Card className="h-full overflow-hidden flex flex-col p-0 group">
       <div className="relative h-48 w-full overflow-hidden border-b border-border/50 bg-muted/20">
         {hasImage && (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
+          <Image
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {outcome && (
+          <span className="absolute top-3 right-3 z-10 bg-accent text-accent-foreground text-[0.65rem] px-2 py-0.5 uppercase tracking-wider font-semibold rounded-md shadow-md">
+            {outcome}
+          </span>
+        )}
       </div>
 
       <div className="p-6 flex flex-col flex-grow">
