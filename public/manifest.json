@@ -1,0 +1,16 @@
+{
+  "name": "Pulkit Barala — Full-Stack Developer & Data Science Engineer",
+  "short_name": "Pulkit Barala",
+  "description": "Portfolio of Pulkit Barala, a full-stack developer building React and Next.js applications with thoughtful UX, strong performance, and practical data-driven problem solving.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,6 +1,13 @@
 {
   "paragraphs": [
-    "After graduating with a degree in Computer Science, I decided to pursue my passion for programming. I enrolled in a coding bootcamp and learned full-stack web development. My favorite part of programming is the problem-solving aspect. I love the feeling of finally figuring out a solution to a bug. My core stack is React, Next.js, Node.js, and PostgreSQL. I am also familiar with TypeScript and Prisma. I am always looking to learn new technologies. I am currently looking for a full-time position as a software developer.",
+    "After graduating with a degree in Computer Science, I decided to pursue my passion for programming. I enrolled in a coding bootcamp and learned full-stack web development. My favorite part of programming is the problem-solving aspect. I love the feeling of finally figuring out a solution to a bug. My core stack is React, Next.js, Node.js, and PostgreSQL. I am also familiar with TypeScript, Prisma, and practical data science and machine learning workflows. I am always looking to learn new technologies. I am currently looking for a full-time position as a software developer.",
+    "Beyond building interfaces, I like working through the full product picture: shaping clearer user flows, tightening performance, and thinking about how a feature will scale in production. I enjoy projects where clean front-end systems, practical APIs, and data science workflows all work together to create a better experience.",
     "When I'm not coding, I enjoy playing video games, watching movies, and playing with my dog. I also enjoy learning new things. I am currently learning about history and philosophy. I'm also learning how to play the guitar."
+  ],
+  "stats": [
+    { "label": "Years Experience", "value": "3+" },
+    { "label": "Projects Completed", "value": "50+" },
+    { "label": "Happy Clients", "value": "30+" },
+    { "label": "Technologies", "value": "20+" }
   ]
 }

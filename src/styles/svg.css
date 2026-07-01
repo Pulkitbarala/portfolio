@@ -1,0 +1,257 @@
+/* Custom SVG and scroll-synchronized animation classes */
+
+:root {
+  --svg-bg-dark-1: #0B1220;
+  --svg-bg-dark-2: #111827;
+  --svg-bg-dark-3: #1E293B;
+  --svg-accent-blue: #38BDF8;
+  --svg-accent-cyan: #22D3EE;
+  --svg-accent-indigo: #6366F1;
+  --svg-accent-purple: #A855F7;
+  --svg-text-white: #FFFFFF;
+}
+
+/* --- Core Animations (Ambient/Looping) --- */
+
+/* Slow rotating gradient */
+@keyframes moving-gradient {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(180deg) translate3d(5%, 5%, 0);
+  }
+  100% {
+    transform: rotate(360deg) translate3d(0, 0, 0);
+  }
+}
+
+/* Floating animation for organic blobs */
+@keyframes floating-blob {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(2%, 4%, 0) scale(1.03);
+  }
+  66% {
+    transform: translate3d(-3%, -2%, 0) scale(0.97);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Node pulse effect */
+@keyframes pulse-node {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+}
+
+/* Hexagon glowing pulses */
+@keyframes pulse-hex {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Floating particles */
+@keyframes float-particle {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0;
+  }
+  10%, 90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(0, -60px, 0);
+    opacity: 0;
+  }
+}
+
+/* Scroll indicator wheel bounce */
+@keyframes indicator-bounce {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate3d(0, 6px, 0);
+    opacity: 1;
+  }
+}
+
+/* --- Ambient Loop Classes --- */
+
+.animate-gradient-move {
+  animation: moving-gradient 25s infinite linear;
+  transform-origin: center center;
+}
+
+.animate-blob-float {
+  animation: floating-blob 10s infinite ease-in-out;
+}
+
+.pulse-node-dot {
+  transform-origin: center;
+  animation: pulse-node 4s infinite ease-in-out;
+}
+
+.pulse-node-dot-delayed {
+  transform-origin: center;
+  animation: pulse-node 5s infinite ease-in-out;
+  animation-delay: 1.5s;
+}
+
+.hexagon-glowing {
+  animation: pulse-hex 6s infinite ease-in-out;
+}
+
+.particle-fly-1 {
+  animation: float-particle 8s infinite linear;
+}
+
+.particle-fly-2 {
+  animation: float-particle 11s infinite linear;
+  animation-delay: 2s;
+}
+
+.particle-fly-3 {
+  animation: float-particle 7s infinite linear;
+  animation-delay: 4.5s;
+}
+
+.scroll-wheel-dot {
+  animation: indicator-bounce 2s infinite ease-in-out;
+}
+
+/* --- Scroll-Synchronized Styles (JS Interpolated, No CSS transitions on scroll variables) --- */
+
+/* Scroll-Bound SVG Line Drawing */
+.draw-path-scroll {
+  stroke-dasharray: var(--path-length, 1000);
+  stroke-dashoffset: calc(var(--path-length, 1000) * (1 - var(--scroll-progress, 0)));
+  will-change: stroke-dashoffset;
+}
+
+/* Glowing blur layer path under the main path */
+.draw-path-scroll-glow {
+  stroke-dasharray: var(--path-length, 1000);
+  stroke-dashoffset: calc(var(--path-length, 1000) * (1 - var(--scroll-progress, 0)));
+  filter: url(#subtle-blur);
+  opacity: calc(var(--scroll-progress, 0) * 0.6);
+  will-change: stroke-dashoffset, opacity;
+}
+
+/* Scroll-Bound Circular Progress Ring */
+.draw-ring-scroll {
+  stroke-dasharray: var(--path-length, 252);
+  stroke-dashoffset: calc(var(--path-length, 252) * (1 - (var(--scroll-progress, 0) * var(--percentage, 100) / 100)));
+  will-change: stroke-dashoffset;
+}
+
+/* Scroll-Bound Glows / Sequential Nodes */
+.glow-scroll {
+  opacity: calc((var(--scroll-progress, 0) - 0.2) / 0.8);
+  transform: scale(calc(0.7 + 0.3 * var(--scroll-progress, 0)));
+  transform-origin: center;
+  will-change: opacity, transform;
+}
+
+/* Node specific scrolling (delayed appearance based on progress threshold) */
+.node-scroll-1 { opacity: calc((var(--scroll-progress, 0) - 0.1) * 10); will-change: opacity; }
+.node-scroll-2 { opacity: calc((var(--scroll-progress, 0) - 0.3) * 10); will-change: opacity; }
+.node-scroll-3 { opacity: calc((var(--scroll-progress, 0) - 0.5) * 10); will-change: opacity; }
+.node-scroll-4 { opacity: calc((var(--scroll-progress, 0) - 0.7) * 10); will-change: opacity; }
+
+/* Scroll-Bound Opacity and Fade Ups */
+.reveal-scroll {
+  opacity: 0;
+  transform: translate3d(0, 25px, 0);
+  will-change: opacity, transform;
+}
+.reveal-scroll.is-initialized {
+  /* Reveal only once: opacity is tied to --reveal-progress, which never decreases */
+  opacity: var(--reveal-progress, 0);
+  /* Translate reverses smoothly when scrolling up */
+  transform: translate3d(0, calc(25px * (1 - var(--scroll-progress, 0))), 0);
+}
+
+/* Scroll-Bound Flight Curve Positioning (Moving Highlights) */
+.flight-object-scroll {
+  offset-path: var(--flight-path);
+  offset-rotate: auto 90deg;
+  offset-distance: calc(var(--scroll-progress, 0) * 100%);
+  will-change: offset-distance;
+}
+
+/* Smooth rotating helper */
+.rotate-scroll {
+  transform: rotate(calc(var(--scroll-progress, 0) * 360deg));
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Smooth scale helper */
+.scale-scroll {
+  transform: scale(calc(0.85 + 0.15 * var(--scroll-progress, 0)));
+  transform-origin: center;
+  will-change: transform;
+}
+
+
+/* Native rendering optimization */
+.optimize-rendering {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* --- Accessibility Rules (prefers-reduced-motion) --- */
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .reveal-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .draw-path-scroll, .draw-ring-scroll {
+    stroke-dashoffset: 0 !important;
+  }
+  
+  .glow-scroll, .node-scroll-1, .node-scroll-2, .node-scroll-3, .node-scroll-4 {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .flight-object-scroll {
+    offset-distance: 100% !important;
+    transform: none !important;
+  }
+  
+  .rotate-scroll, .scale-scroll {
+    transform: none !important;
+  }
+  
+  .animate-blob-float, .animate-gradient-move, .pulse-node-dot, .pulse-node-dot-delayed, .hexagon-glowing, .scroll-wheel-dot {
+    animation: none !important;
+    transform: none !important;
+  }
+}

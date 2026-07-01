@@ -1,0 +1,26 @@
+[
+  {
+    "role": "Lead Full-Stack Developer",
+    "company": "Freelance & Contract",
+    "period": "2024 - Present",
+    "description": "Architected custom SaaS portals, end-to-end encrypted transfer layers, and client dashboards. Optimized API load times, built custom caching states, and integrated AI assistant interfaces."
+  },
+  {
+    "role": "Open Source Contributor",
+    "company": "GitHub Community",
+    "period": "2023 - Present",
+    "description": "Engineered automated Chrome extensions, local data checking scripts, and reusable web boilerplates. Contributed to documentation on security practices and responsive CSS techniques."
+  },
+  {
+    "role": "Data Science Trainee",
+    "company": "Machine Learning Lab",
+    "period": "2022 - 2023",
+    "description": "Programmed Deep learning pipelines using TensorFlow/ResNet. Designed LSTM pipelines to analyze facial consistency features, achieving high-accuracy detection and deploying via Hugging Face."
+  },
+  {
+    "role": "Computer Science Graduate",
+    "company": "University Center",
+    "period": "2019 - 2023",
+    "description": "Acquired deep competencies in system architectures, database normalization, data structures, and algorithms. Worked on location mapping systems and medical query routers."
+  }
+]

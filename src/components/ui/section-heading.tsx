@@ -1,9 +1,8 @@
-"use client";
-
-import { motion, HTMLMotionProps } from "framer-motion";
+import React from "react";
 import { cn } from "@/lib/utils";
+import { ScrollReveal } from "@/components/animation/ScrollReveal";
 
-interface SectionHeadingProps extends HTMLMotionProps<"h2"> {
+interface SectionHeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   children: React.ReactNode;
   subtitle?: string;
 }
@@ -11,34 +10,26 @@ interface SectionHeadingProps extends HTMLMotionProps<"h2"> {
 export function SectionHeading({ children, subtitle, className, ...props }: SectionHeadingProps) {
   return (
     <div className={cn("flex flex-col items-center justify-center text-center mb-16", className)}>
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-3xl md:text-4xl font-bold tracking-tight text-foreground"
-        {...props}
-      >
-        {children}
-      </motion.h2>
-      {subtitle && (
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-4 text-muted-foreground max-w-2xl text-lg"
+      <ScrollReveal delay={50} duration={500}>
+        <h2
+          className="text-3xl md:text-4xl font-bold tracking-tight text-foreground"
+          {...props}
         >
-          {subtitle}
-        </motion.p>
+          {children}
+        </h2>
+      </ScrollReveal>
+      
+      {subtitle && (
+        <ScrollReveal delay={150} duration={500}>
+          <p className="mt-4 text-muted-foreground max-w-2xl text-lg">
+            {subtitle}
+          </p>
+        </ScrollReveal>
       )}
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-6 h-1 w-20 rounded-full bg-accent"
-      />
+      
+      <ScrollReveal delay={250} duration={400}>
+        <div className="mt-6 h-1 w-20 rounded-full bg-accent" />
+      </ScrollReveal>
     </div>
   );
 }

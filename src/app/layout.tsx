@@ -1,18 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Sans, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import "@/styles/svg.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { siteConfig } from "@/lib/site";
 import Script from "next/script";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-headings",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const instrumentSans = Instrument_Sans({
+  variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-code",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -27,6 +36,10 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.person.name, url: siteConfig.url }],
   creator: siteConfig.person.name,
   publisher: siteConfig.person.name,
+  manifest: "/manifest.json",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     url: siteConfig.url,
@@ -68,9 +81,9 @@ import { DevToolsGuard } from "@/components/ui/devtools-guard";
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  }: Readonly<{
+    children: React.ReactNode;
+  }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
@@ -92,13 +105,41 @@ export default function RootLayout({
             </Script>
           </>
         )}
+        {/* CSS Fallback for Disabled JS */}
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+                .reveal-fade-up {
+                  opacity: 1 !important;
+                  transform: none !important;
+                }
+                .draw-path {
+                  stroke-dashoffset: 0 !important;
+                }
+                .glow-target {
+                  opacity: 1 !important;
+                  transform: none !important;
+                  scale: 1 !important;
+                }
+                .svg-draw-container .draw-path {
+                  stroke-dashoffset: 0 !important;
+                }
+                .svg-draw-container .glow-target {
+                  opacity: 1 !important;
+                  transform: none !important;
+                }
+              `,
+            }}
+          />
+        </noscript>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col font-sans selection:bg-accent selection:text-accent-foreground`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+      <body className={`${instrumentSans.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased min-h-screen flex flex-col font-sans selection:bg-accent selection:text-accent-foreground`}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <DevToolsGuard />
           <div className="flex flex-col min-h-screen bg-background text-foreground relative overflow-x-hidden">
             <Navbar />
-            <main className="flex-1 w-full pt-28 sm:pt-36">
+            <main className="flex-1 w-full pt-8 sm:pt-16 pb-28">
               {children}
             </main>
             <Footer />

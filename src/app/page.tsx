@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
+import { Experience } from "@/components/sections/experience";
 import { Skills } from "@/components/sections/skills";
 import { Projects } from "@/components/sections/projects";
 import { Services } from "@/components/sections/services";
@@ -15,6 +17,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = "force-static";
+
 export default function Home() {
   const personSchema = {
     "@type": "Person",
@@ -25,7 +29,8 @@ export default function Home() {
     description: siteConfig.description,
     email: siteConfig.person.email,
     knowsAbout: [...siteConfig.keywords],
-    sameAs: [siteConfig.links.github].filter(Boolean),
+    image: `${siteConfig.url}/images/og-image.png`,
+    sameAs: [siteConfig.links.github, siteConfig.links.linkedin, siteConfig.links.twitter].filter(Boolean),
   };
 
   const websiteSchema = {
@@ -55,36 +60,67 @@ export default function Home() {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@graph": [personSchema, websiteSchema, webpageSchema]
+    "@graph": [personSchema, websiteSchema, webpageSchema,
+      {
+        "@type": "ProfilePage",
+        "@id": `${siteConfig.url}/#profile`,
+        "url": siteConfig.url,
+        "name": siteConfig.person.name,
+        "mainEntity": { "@id": `${siteConfig.url}/#person` },
+        "sameAs": [siteConfig.links.github, siteConfig.links.linkedin, siteConfig.links.twitter].filter(Boolean)
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${siteConfig.url}/#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": siteConfig.url
+          }
+        ]
+      }
+    ]
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full">
-      <script
+    <div className="flex flex-col items-center justify-center w-full relative">
+      <Script
+        id="json-ld-schema"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
+
       {/* Hero renders immediately for fast LCP */}
       <Hero />
-      <div className="w-full h-24 bg-gradient-to-b from-transparent to-background/5" />
 
       {/* Below-fold sections only render when approaching viewport */}
-      <LazySection minHeight="300px">
+      <LazySection id="about" className="scroll-mt-20" minHeight="300px">
         <About />
       </LazySection>
-      <LazySection minHeight="400px">
+      
+      <LazySection id="experience" className="scroll-mt-20" minHeight="350px">
+        <Experience />
+      </LazySection>
+      
+      <LazySection id="skills" className="scroll-mt-20" minHeight="400px">
         <Skills />
       </LazySection>
-      <LazySection minHeight="600px">
+      
+      <LazySection id="projects" className="scroll-mt-20" minHeight="600px">
         <Projects />
       </LazySection>
+      
       <LazySection minHeight="400px">
         <Services />
       </LazySection>
+      
       <LazySection minHeight="300px">
         <Testimonials />
       </LazySection>
-      <LazySection minHeight="500px">
+      
+      <LazySection id="contact" className="scroll-mt-20" minHeight="500px">
         <Contact />
       </LazySection>
     </div>

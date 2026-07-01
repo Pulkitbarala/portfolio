@@ -1,76 +1,61 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { Card } from "@/components/ui/card";
 import testimonialsData from "@/data/testimonials.json";
-import Image from "next/image";
-import { Quote } from "lucide-react";
-
-type TestimonialProps = {
-  name: string;
-  role: string;
-  text: string;
-  avatarUrl: string;
-};
-
-function TestimonialCard({ name, role, text, avatarUrl }: TestimonialProps) {
-  return (
-    <Card className="h-full flex flex-col justify-between relative overflow-hidden group">
-      {/* Decorative quotes icon in background */}
-      <Quote className="absolute right-4 top-4 h-24 w-24 text-accent/5 -rotate-12 select-none pointer-events-none group-hover:text-accent/10 transition-colors duration-300" />
-      
-      <div className="relative z-10 flex-grow flex flex-col">
-        <p className="text-muted-foreground italic leading-relaxed text-base sm:text-lg mb-6">
-          &ldquo;{text}&rdquo;
-        </p>
-      </div>
-
-      <div className="relative z-10 flex items-center gap-4 mt-auto border-t border-border/50 pt-4">
-        <div className="relative h-12 w-12 rounded-full overflow-hidden border border-border bg-muted">
-          <Image
-            src={avatarUrl}
-            alt={name}
-            fill
-            sizes="48px"
-            className="object-cover"
-            loading="lazy"
-          />
-        </div>
-        <div>
-          <h4 className="font-semibold text-foreground text-sm sm:text-base leading-tight">
-            {name}
-          </h4>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            {role}
-          </p>
-        </div>
-      </div>
-    </Card>
-  );
-}
+import { ScrollReveal } from "@/components/animation/ScrollReveal";
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="scroll-mt-28 mb-28 px-4 max-w-5xl mx-auto w-full">
-      <SectionHeading subtitle="What clients and collaborators say about working with me.">
-        Client Testimonials
-      </SectionHeading>
+    <section 
+      id="testimonials" 
+      className="relative py-16 px-6 max-w-6xl mx-auto"
+    >
+      {/* Editorial horizontal grid line */}
+      <div className="editorial-grid-line mb-12 opacity-60" />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-        {testimonialsData.map((testimonial, index) => (
-          <motion.div
-            key={testimonial.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.15 }}
-          >
-            <TestimonialCard {...testimonial} />
-          </motion.div>
-        ))}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
+        
+        {/* Left Column: Heading Info */}
+        <div className="lg:col-span-4 mb-6 lg:mb-0">
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-widest text-accent font-bold block mb-2">
+            06 // REPUTATION
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight uppercase text-foreground">
+            Feedback
+          </h2>
+          <p className="text-muted-foreground text-xs sm:text-sm font-light mt-4 max-w-xs uppercase leading-relaxed font-mono">
+            Client testimonials from project integrations and software applications.
+          </p>
+        </div>
+
+        {/* Right Column: Editorial Quote Sheets */}
+        <div className="lg:col-span-8 flex flex-col gap-12 w-full">
+          {testimonialsData.map((testimonial, index) => (
+            <ScrollReveal
+              key={testimonial.name}
+              delay={index * 150}
+              duration={600}
+              className="flex flex-col border-b border-border/60 pb-8 last:border-none last:pb-0"
+            >
+              {/* Massive italic quote block */}
+              <blockquote className="text-lg sm:text-xl md:text-2xl font-light italic leading-relaxed text-foreground/90 font-serif">
+                &ldquo;{testimonial.text}&rdquo;
+              </blockquote>
+              
+              {/* Metadata block in monospace */}
+              <div className="mt-4 flex items-center gap-3 font-mono text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">
+                <span className="text-accent font-bold">—</span>
+                <span className="text-foreground font-semibold">{testimonial.name}</span>
+                <span className="text-border">/</span>
+                <span>{testimonial.role}</span>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
       </div>
     </section>
   );
 }
+
+export default Testimonials;
