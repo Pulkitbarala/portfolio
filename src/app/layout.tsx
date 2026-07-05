@@ -134,12 +134,15 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className={`${instrumentSans.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased min-h-screen flex flex-col font-sans selection:bg-accent selection:text-accent-foreground`}>
+      <body
+        suppressHydrationWarning
+        className={`${instrumentSans.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased min-h-screen flex flex-col font-sans selection:bg-accent selection:text-accent-foreground`}
+      >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <DevToolsGuard />
-          <div className="flex flex-col min-h-screen bg-background text-foreground relative overflow-x-hidden">
+          <div suppressHydrationWarning className="flex flex-col min-h-screen bg-background text-foreground relative overflow-x-hidden">
             <Navbar />
-            <main className="flex-1 w-full pt-8 sm:pt-16 pb-28">
+            <main className="flex-1 w-full pt-20 sm:pt-24 pb-28">
               {children}
             </main>
             <Footer />
