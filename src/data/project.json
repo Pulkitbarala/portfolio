@@ -29,7 +29,7 @@
   {
     "title": "Auto typer",
     "description": "Problem: Entering large sets of data manually into standard forms is highly error-prone and time-consuming. Solution: Developed an automation application that simulates human typing cadences for filling out digital forms and performing repetitive text entries securely. Impact: Saved users over 15 hours of manual data entry weekly.",
-    "tags": ["Next.js", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    "tags": ["Python", "PyAutoGUI", "Tkinter", "PyInstaller"],
     "imageUrl": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
     "githubUrl": "https://github.com/Pulkitbarala/Auto-typer",
     "demoUrl": "https://auto-typer.vercel.app/",
@@ -43,24 +43,6 @@
     "githubUrl": "https://github.com/Pulkitbarala/Google-Cloud-Quiz-Automation",
     "demoUrl": "https://google-cloud-quiz-automation.vercel.app/",
     "outcome": "100% Local Validation Rate"
-  },
-  {
-    "title": "Fitness Tracker App",
-    "description": "Problem: Users struggle to maintain consistent logs of daily workouts and calorie intakes in a single place. Solution: Designed a mobile-first tracking app using React/Redux with Supabase back-end to log custom workouts, track nutrition, and view progress graphs. Impact: Encouraged consistent logging with 25% higher retention.",
-    "tags": ["React", "Redux", "Supabase", "Tailwind"],
-    "imageUrl": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1000&auto=format&fit=crop",
-    "githubUrl": "https://github.com",
-    "demoUrl": "https://demo.com",
-    "outcome": "+25% Consistent Logging"
-  },
-  {
-    "title": "Recipe Finder",
-    "description": "Problem: Home cooks frequently face difficulty deciding what to cook based solely on ingredients in their pantry. Solution: Engineered a recipe search engine connected to culinary database APIs that matches available ingredients to tailored recipe instructions instantly. Impact: Reduced query search latency to under 150ms.",
-    "tags": ["Next.js", "Spoonacular API", "Tailwind CSS"],
-    "imageUrl": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?q=80&w=1000&auto=format&fit=crop",
-    "githubUrl": "https://github.com",
-    "demoUrl": "https://demo.com",
-    "outcome": "<150ms Search Latency"
   },
   {
     "title": "Dev Portfolio Template",

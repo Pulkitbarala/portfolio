@@ -12,15 +12,9 @@
     "description": "Engineered automated Chrome extensions, local data checking scripts, and reusable web boilerplates. Contributed to documentation on security practices and responsive CSS techniques."
   },
   {
-    "role": "Data Science Trainee",
-    "company": "Machine Learning Lab",
-    "period": "2022 - 2023",
-    "description": "Programmed Deep learning pipelines using TensorFlow/ResNet. Designed LSTM pipelines to analyze facial consistency features, achieving high-accuracy detection and deploying via Hugging Face."
-  },
-  {
     "role": "Computer Science Graduate",
-    "company": "University Center",
-    "period": "2019 - 2023",
+    "company": "Lovely Professional University",
+    "period": "2022 - 2026",
     "description": "Acquired deep competencies in system architectures, database normalization, data structures, and algorithms. Worked on location mapping systems and medical query routers."
   }
 ]

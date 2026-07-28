@@ -124,7 +124,7 @@ export function Hero() {
             <div className="relative group">
               <div className="relative aspect-[3/4] w-full rounded-lg overflow-hidden border border-border bg-muted">
                 <Image
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop"
+                  src="https://drive.google.com/uc?export=view&id=1THKeSCYffJJHQmr7DayDv4_lFyZOSpa0"
                   alt="Pulkit Barala"
                   fill
                   priority
